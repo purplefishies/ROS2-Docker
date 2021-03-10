@@ -11,7 +11,9 @@ WORKDIR /home/${USER}
 RUN apt-get update && apt-get install -y \
     sudo \
     tree \
-    less
+    less \
+    xterm \
+    tmux
 RUN useradd -U ${USER} --uid=${UID}  -G sudo
 RUN chown -R ${USER}:${USER} /home/${USER}
 USER ${UID}:${GID}
