@@ -8,6 +8,7 @@ touch $XAUTH
 
 xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 
+xhost +local:docker
 
 ROS_WS_DIR=/mnt/workspace/ros2_ws && HOMEDIR=/home/jimi_damon && \
 docker run -e ROS_WS_DIR=$ROS_WS_DIR -it \
@@ -15,7 +16,7 @@ docker run -e ROS_WS_DIR=$ROS_WS_DIR -it \
   -v $HOME/Ros:/mnt/workspace  \
   -v $HOME/.inputrc:${HOMEDIR}/.inputrc:ro \
   -v $HOME/.bashrc:${HOMEDIR}/.bashrc:ro \
-  -v $HOME/.bash_profile:${HOMEDIR}/.bash_profile:ro \
+  -v $HOME/.bash_profile:${HOMEDIR}/.bash_:ro \
   -v $HOME/.ls_colors:${HOMEDIR}/.ls_colors \
   -v $HOME/.bash_alias:${HOMEDIR}/.bash_alias \
   -v $HOME/.tmux.conf:${HOMEDIR}/.tmux.conf \
